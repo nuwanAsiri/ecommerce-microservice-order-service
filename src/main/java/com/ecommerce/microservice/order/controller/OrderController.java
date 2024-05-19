@@ -1,7 +1,7 @@
 package com.ecommerce.microservice.order.controller;
 
 import com.ecommerce.microservice.order.entity.ProductOrder;
-import com.ecommerce.microservice.order.repository.OrderRepository;
+import com.ecommerce.microservice.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,28 +12,25 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private OrderRepository orderRepository;
+    private OrderService orderService;
 
     @GetMapping
     public List<ProductOrder> getOrders(){
-        return orderRepository.findAll();
+        return orderService.getOrders();
     }
 
     @PostMapping
     public ProductOrder createOrder(@RequestBody ProductOrder productOrder){
-        return orderRepository.save(productOrder);
+        return orderService.createOrder(productOrder);
     }
 
     @PutMapping("/{id}")
     public ProductOrder updateOrder(@PathVariable Long id, @RequestBody ProductOrder productOrderDetails){
-        ProductOrder productOrder = orderRepository.findById(id).orElseThrow();
-        productOrder.setProductName(productOrderDetails.getProductName());
-        productOrder.setQuantity(productOrderDetails.getQuantity());
-        return orderRepository.save(productOrder);
+        return orderService.updateOrder(id, productOrderDetails);
     }
 
     @DeleteMapping("/{id}")
     public void deleteOrder(@PathVariable Long id){
-        orderRepository.deleteById(id);
+        orderService.deleteOrder(id);
     }
 }
