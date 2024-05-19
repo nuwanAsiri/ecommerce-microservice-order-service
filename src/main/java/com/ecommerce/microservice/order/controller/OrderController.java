@@ -1,7 +1,7 @@
-package com.ecommerce.microservice.order.order.controller;
+package com.ecommerce.microservice.order.controller;
 
-import com.ecommerce.microservice.order.order.entity.ProductOrder;
-import com.ecommerce.microservice.order.order.repository.OrderRepository;
+import com.ecommerce.microservice.order.entity.ProductOrder;
+import com.ecommerce.microservice.order.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

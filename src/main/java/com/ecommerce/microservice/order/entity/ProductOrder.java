@@ -1,4 +1,4 @@
-package com.ecommerce.microservice.order.order.entity;
+package com.ecommerce.microservice.order.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
