@@ -3,6 +3,7 @@ package com.ecommerce.microservice.order.service;
 import com.ecommerce.microservice.order.entity.ProductOrder;
 import com.ecommerce.microservice.order.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Cacheable("orders")
     public List<ProductOrder> getOrders(){
         return orderRepository.findAll();
     }
